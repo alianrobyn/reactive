@@ -1,30 +1,39 @@
 create table users
 (
     id bigint generated always as identity primary key not null,
-    username varchar(100),
-    password varchar(100),
     name varchar(100),
     surname varchar(100),
     phone varchar(100)
 );
 
-create table roles
+create table trains
 (
     id bigint generated always as identity primary key not null,
-    name varchar(100)
+    Station1 varchar(100),
+    Station2 varchar(100),
+    time varchar(100),
+    date varchar(100)
 );
 
-create table roles_has_users
-(
-    id bigint generated always as identity primary key not null,
-    user_id bigint,
-    role_id bigint
+create table tickets (
+     id bigint generated always as identity primary key not null,
+     user_id  bigint NOT NULL,
+     train_id   bigint NOT NULL,
+     user_name varchar(100),
+     user_surname varchar(100),
+     Station1 varchar(100),
+     Station2 varchar(100),
+     time varchar(100),
+     date varchar(100),
+     price varchar(100)
 );
 
-ALTER TABLE roles_has_users
+ALTER TABLE trains ADD PRIMARY KEY (id);
+
+ALTER TABLE tickets
+    ADD CONSTRAINT fk_train_id
+        FOREIGN KEY (train_id) REFERENCES trains(id);
+
+ALTER TABLE tickets
     ADD CONSTRAINT fk_user_id
         FOREIGN KEY (user_id) REFERENCES users(id);
-
-ALTER TABLE roles_has_users
-    ADD CONSTRAINT fk_role_id
-        FOREIGN KEY (role_id) REFERENCES roles(id);

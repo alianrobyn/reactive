@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import ua.com.reactive.reactive.entity.Client;
+import ua.com.reactive.reactive.entity.User;
 import ua.com.reactive.reactive.entity.Train;
 import ua.com.reactive.reactive.entity.Greeting;
 
@@ -37,10 +37,10 @@ public class GreetingHandler {
                 .orElse("0");
 
 
-        Flux<Client> clients = Flux.just(
-                        new Client(1L, "Olena", "Kovalenko", "+380971234567"),
-                        new Client(2L, "Andrij", "Melnyk", "+380730987654"),
-                        new Client(3L, "Sasha", "Butenko", "+380679382048")
+        Flux<User> clients = Flux.just(
+                        new User(1L, "Olena", "Kovalenko", "+380971234567"),
+                        new User(2L, "Andrij", "Melnyk", "+380730987654"),
+                        new User(3L, "Sasha", "Butenko", "+380679382048")
                 )
                 .skip(Long.valueOf(start))
                 .take(2);
@@ -49,7 +49,7 @@ public class GreetingHandler {
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(clients, Client.class);
+                .body(clients, User.class);
     }
 
     public Mono<ServerResponse> getTrains(ServerRequest request) {
