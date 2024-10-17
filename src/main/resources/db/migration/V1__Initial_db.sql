@@ -12,7 +12,8 @@ create table trains
     Station1 varchar(100),
     Station2 varchar(100),
     time varchar(100),
-    date varchar(100)
+    date varchar(100),
+    price varchar(100)
 );
 
 create table tickets (
@@ -27,8 +28,6 @@ create table tickets (
      date varchar(100),
      price varchar(100)
 );
-
-ALTER TABLE trains ADD PRIMARY KEY (id);
 
 ALTER TABLE tickets
     ADD CONSTRAINT fk_train_id
