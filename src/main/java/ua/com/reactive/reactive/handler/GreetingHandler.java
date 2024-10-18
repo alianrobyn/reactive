@@ -10,6 +10,9 @@ import reactor.core.publisher.Mono;
 import ua.com.reactive.reactive.entity.User;
 import ua.com.reactive.reactive.entity.Train;
 import ua.com.reactive.reactive.entity.Greeting;
+import ua.com.reactive.reactive.repository.UserRepository;
+
+import java.util.Map;
 
 @Component
 
@@ -30,27 +33,42 @@ public class GreetingHandler {
                 .body(BodyInserters.fromValue("Main page!"));
     }
 
-    public Mono<ServerResponse> getClients(ServerRequest request) {
+    public Mono<ServerResponse> getUsers(ServerRequest request) {
 
         String start = request
                 .queryParam("start")
                 .orElse("0");
 
 
-        Flux<User> clients = Flux.just(
+        Flux<User> users = Flux.just(
                         new User(1L, "Olena", "Kovalenko", "+380971234567"),
                         new User(2L, "Andrij", "Melnyk", "+380730987654"),
                         new User(3L, "Sasha", "Butenko", "+380679382048")
                 )
                 .skip(Long.valueOf(start))
-                .take(2);
+                .take(5);
 
 
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(clients, User.class);
+                .body(users, User.class);
     }
+
+
+//    public Mono<ServerResponse> getUsers(ServerRequest request) {
+//        String user = request.queryParam("user").orElse("no user");
+//
+//        // Creating a simple response body map
+//        Map<String, String> responseBody = Map.of("user", user);
+//
+//        // Return as JSON
+//        return ServerResponse
+//                .ok()
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .bodyValue(responseBody);  // Use bodyValue for simple objects
+//    }
+
 
     public Mono<ServerResponse> getTrains(ServerRequest request) {
 

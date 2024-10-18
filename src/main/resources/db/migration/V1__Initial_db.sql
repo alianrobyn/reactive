@@ -35,4 +35,4 @@ ALTER TABLE tickets
 
 ALTER TABLE tickets
     ADD CONSTRAINT fk_user_id
-        FOREIGN KEY (user_id) REFERENCES users(id);
+        FOREIGN KEY (user_id) REFERENCES "users"(id);
