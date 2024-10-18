@@ -1,6 +1,6 @@
 package ua.com.reactive.reactive.service;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -8,13 +8,17 @@ import ua.com.reactive.reactive.entity.User;
 import ua.com.reactive.reactive.repository.UserRepository;
 
 @Service
-@RequiredArgsConstructor
 
 public class UserService {
 
     private final UserRepository userRepository;
 
-    public Flux<User> findAll() {
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public Flux<User> list() {
         return userRepository.findAll();
     }
 

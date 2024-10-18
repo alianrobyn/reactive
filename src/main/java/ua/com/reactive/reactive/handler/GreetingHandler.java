@@ -33,27 +33,27 @@ public class GreetingHandler {
                 .body(BodyInserters.fromValue("Main page!"));
     }
 
-    public Mono<ServerResponse> getUsers(ServerRequest request) {
-
-        String start = request
-                .queryParam("start")
-                .orElse("0");
-
-
-        Flux<User> users = Flux.just(
-                        new User(1L, "Olena", "Kovalenko", "+380971234567"),
-                        new User(2L, "Andrij", "Melnyk", "+380730987654"),
-                        new User(3L, "Sasha", "Butenko", "+380679382048")
-                )
-                .skip(Long.valueOf(start))
-                .take(5);
-
-
-        return ServerResponse
-                .ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(users, User.class);
-    }
+//    public Mono<ServerResponse> getUsers(ServerRequest request) {
+//
+//        String start = request
+//                .queryParam("start")
+//                .orElse("0");
+//
+//
+//        Flux<User> users = Flux.just(
+//                        new User(1L, "Olena", "Kovalenko", "+380971234567"),
+//                        new User(2L, "Andrij", "Melnyk", "+380730987654"),
+//                        new User(3L, "Sasha", "Butenko", "+380679382048")
+//                )
+//                .skip(Long.valueOf(start))
+//                .take(5);
+//
+//
+//        return ServerResponse
+//                .ok()
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .body(users, User.class);
+//    }
 
 
 //    public Mono<ServerResponse> getUsers(ServerRequest request) {
