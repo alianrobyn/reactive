@@ -34,9 +34,10 @@ public class UserController {
 //
 //    public Flux<User> getUsers() {
 //        Flux<User> users = Flux.just(
-//                        new User(1L, "Olena", "Kovalenko", "+380971234567"),
-//                        new User(2L, "Andrij", "Melnyk", "+380730987654"),
-//                        new User(3L, "Sasha", "Butenko", "+380679382048")
+//                        new User("John", "Kek", "+380979305729", "jek", "1111"),
+//                        new User("Lyudmyla", "Serdyuk", "+380689304829", "ludo4ka", "2222"),
+//                        new User("Valeriy", "Zhab", "+380739605389", "zhabka", "3333"),
+//                        new User("Alina", "Robyn", "+380972797473", "alianrobyn", "4444")
 //                )
 //                .skip(0)
 //                .take(2);
