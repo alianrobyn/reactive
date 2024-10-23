@@ -15,23 +15,40 @@ import ua.com.reactive.reactive.repository.UserRepository;
 import java.util.Map;
 
 @Component
-
 public class GreetingHandler {
 
     public Mono<ServerResponse> hello(ServerRequest request) {
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue("Hello World!"));
+    }
+
+    public Mono<ServerResponse> users(ServerRequest request){
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(BodyInserters.fromValue("User Page"));
+    }
+
+
+    public Mono<ServerResponse> admin(ServerRequest request) {
+
+        Flux<User> users = Flux.
+                just(
+                        new User("John", "Kek", "+380979305729", "jek", "1111"),
+                        new User("Lyudmyla", "Serdyuk", "+380689304829", "ludo4ka", "2222"),
+                        new User("Valeriy", "Zhab", "+380739605389", "zhabka", "3333"),
+                        new User("Alina", "Robyn", "+380972797473", "alianrobyn", "4444")
+//
+                );
 
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromValue(new Greeting("Hello, Spring")));
+                .body(users, User.class);
     }
 
-    public Mono<ServerResponse> home(ServerRequest request) {
-        return ServerResponse
-                .ok()
-                .contentType(MediaType.TEXT_PLAIN)
-                .body(BodyInserters.fromValue("Main page!"));
-    }
 
 //    public Mono<ServerResponse> users(ServerRequest request){
 //        return ServerResponse

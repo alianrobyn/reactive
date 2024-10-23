@@ -17,10 +17,11 @@ public class GreetingRouter {
 
         RequestPredicate accept = accept(MediaType.APPLICATION_JSON);
         return RouterFunctions
-                .route(RequestPredicates.GET("/hello").and(accept(MediaType.APPLICATION_JSON)), greetingHandler::hello)
-                .andRoute(RequestPredicates.GET("/"), greetingHandler::home);
-//                .andRoute(RequestPredicates.GET("/users"), greetingHandler::getUsers)
-//                .andRoute(RequestPredicates.GET("/trains"), greetingHandler::getTrains);
+
+                .route(RequestPredicates.GET("/"), greetingHandler::hello)
+                .andRoute(RequestPredicates.GET("/users").and(accept), greetingHandler::users)
+                .andRoute(RequestPredicates.GET("/admin"), greetingHandler::admin);
+
     }
 
 }
