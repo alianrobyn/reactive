@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import ua.com.reactive.reactive.controller.UsersController;
+import ua.com.reactive.reactive.entity.User;
 import ua.com.reactive.reactive.repository.UserRepository;
 import ua.com.reactive.reactive.repository.RoleRepository;
 import ua.com.reactive.reactive.repository.RolesHasUsersRepository;
@@ -40,5 +42,8 @@ public class UserService implements ReactiveUserDetailsService {
                                     return user;
                                 })
                 );
+    }
+    public Mono<User> save(User user) {
+        return userRepository.save(user);
     }
 }

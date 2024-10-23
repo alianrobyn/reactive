@@ -29,7 +29,8 @@ public class User implements UserDetails {
 
     private Set<GrantedAuthority> authorities = new HashSet<>();
 
-    public User(String firstname, String lastname, String phone, String username, String password) {
+    public User(Long id, String firstname, String lastname, String phone, String username, String password) {
+        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.phone = phone;

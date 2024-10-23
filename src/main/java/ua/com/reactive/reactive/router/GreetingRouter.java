@@ -20,7 +20,8 @@ public class GreetingRouter {
 
                 .route(RequestPredicates.GET("/"), greetingHandler::hello)
                 .andRoute(RequestPredicates.GET("/users").and(accept), greetingHandler::users)
-                .andRoute(RequestPredicates.GET("/admin"), greetingHandler::admin);
+                .andRoute(RequestPredicates.GET("/admin"), greetingHandler::admin)
+                .andRoute(RequestPredicates.GET("/registration"), greetingHandler::registration);
 
     }
 

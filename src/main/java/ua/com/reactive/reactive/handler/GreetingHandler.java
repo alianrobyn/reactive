@@ -36,10 +36,10 @@ public class GreetingHandler {
 
         Flux<User> users = Flux.
                 just(
-                        new User("John", "Kek", "+380979305729", "jek", "1111"),
-                        new User("Lyudmyla", "Serdyuk", "+380689304829", "ludo4ka", "2222"),
-                        new User("Valeriy", "Zhab", "+380739605389", "zhabka", "3333"),
-                        new User("Alina", "Robyn", "+380972797473", "alianrobyn", "4444")
+                        new User(2L, "John", "Kek", "+380979305729", "jek", "1111"),
+                        new User(3L, "Lyudmyla", "Serdyuk", "+380689304829", "ludo4ka", "2222"),
+                        new User(4L,"Valeriy", "Zhab", "+380739605389", "zhabka", "3333"),
+                        new User(5L, "Alina", "Robyn", "+380972797473", "alianrobyn", "4444")
 //
                 );
 
@@ -47,6 +47,10 @@ public class GreetingHandler {
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(users, User.class);
+    }
+
+    public Mono<ServerResponse> registration (ServerRequest request) {
+        return ServerResponse.ok().render("registration");
     }
 
 
